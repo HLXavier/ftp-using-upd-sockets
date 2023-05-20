@@ -1,0 +1,36 @@
+WebSocket is a computer communications protocol, p
+roviding full-duplex communication channels over a
+ single TCP connection. The WebSocket protocol was
+ standardized by the IETF as RFC 6455 in 2011. The
+ current API specification allowing web applicatio
+ns to use this protocol is known as WebSockets.
+ It is a living standard maintained by the WHATWG 
+and a successor to The WebSocket API from the W3C.
+WebSocket is distinct from HTTP. Both protocols ar
+e located at layer 7 in the OSI model and depend o
+n TCP at layer 4. Although they are different, RFC
+ 6455 states that WebSocket "is designed to work o
+ver HTTP ports 443 and 80 as well as to support HT
+TP proxies and intermediaries", thus making it com
+patible with HTTP. To achieve compatibility, the W
+ebSocket handshake uses the HTTP Upgrade header
+to change from the HTTP protocol to the WebSocket.
+The WebSocket protocol enables interaction between
+a web browser (or other client application) and a
+web server with lower overhead than half-duplex a
+lternatives such as HTTP polling, facilitating rea
+l-time data transfer from and to the server. This 
+is made possible by providing a standardized way f
+or the server to send content to the client withou
+t being first requested by the client, and allowin
+g messages to be passed back and forth while keepi
+ng the connection open. In this way, a two-way ong
+oing conversation can take place between the clien
+t and the server. The communications are usually d
+one over TCP port number 443 (or 80 in the case of
+ unsecured connections), which is beneficial for e
+nvironments that block non-web Internet connection
+s using a firewall. Similar two-way browser–server
+ communications have been achieved in non-standard
+ized ways using stopgap technologies such as Comet
+ or Adobe Flash Player.
