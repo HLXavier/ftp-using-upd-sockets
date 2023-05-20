@@ -1,15 +1,15 @@
 import socket
 
-UDP_IP = "127.0.0.1"
-UDP_PORT = 34754
-MESSAGE = b"Hello, World!"
+IP = '127.0.0.1'
+PORT = 34754
+FORMAT = 'utf-8'
 
-print("UDP target IP: %s" % UDP_IP)
-print("UDP target port: %s" % UDP_PORT)
-print("message: %s" % MESSAGE)
+socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-sock = socket.socket(socket.AF_INET, # Internet
-                     socket.SOCK_DGRAM) # UDP
-sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
+def send(message):
+    message = message.encode(FORMAT)
+    socket.sendto(message, (IP, PORT))
 
-
+while True:
+    message = input('--> ')
+    send(message) 
