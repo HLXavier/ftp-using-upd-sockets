@@ -8,23 +8,25 @@ socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 socket.bind((IP, PORT))
 
 
+def write_file(file_name, data):
+    with open(file_name, 'wb') as file:
+        file.write(data)
+
+
 def receive_file():
     file_size, address = socket.recvfrom(1024)
-
     file_size = int(file_size.decode(FORMAT))
 
-    blocks = int(ceil(file_size / BLOCK_SIZE))
+    num_blocks = int(ceil(file_size / BLOCK_SIZE))
+    blocks = [b'' for _ in range(num_blocks)]
     padding = file_size % BLOCK_SIZE
 
-    with open('new_file.txt', 'wb') as file:
-        for i in range(blocks):
-            data, address = socket.recvfrom(BLOCK_SIZE)
+    for i in range(blocks):
+        data, address = socket.recvfrom(BLOCK_SIZE)
 
-            if i == blocks - 1:
-                data = unpad(data, padding)
-
-            file.write(data)
-
+        if i == blocks - 1:
+            data = unpad(data, padding)
+        
 
 print('Waiting for messages...')
 while True:
